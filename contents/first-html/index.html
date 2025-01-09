@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/top.css">
+    <title>Document</title>
+</head>
+<body>
+    <button id="previous">前へ</button>
+    <button id="next">次へ</button>
+    <div id="contents"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const buttons = document.querySelectorAll('button');
+        const nowpage = 1;
+        async function loadPage(page) {
+            const res = await fetch(`./pages/${page}.md`);
+            const text = await res.text();
+            const html = marked.parse(text);
+            document.getElementById('contents').innerHTML = html;
+        }
+        loadPage(nowpage);
+    </script>
+</body>
+</html>

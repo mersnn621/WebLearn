@@ -1,0 +1,84 @@
+@import url('./reset.css');
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #222;
+    color:white;
+}
+
+#title{
+    font-size: 24px;
+    margin: 12px;
+}
+
+.subtitle{
+    font-size: 32px;
+    margin-bottom: 36px;
+}
+
+.hr{
+    border: 0;
+    height: 1px;
+    background-color: #555;
+}
+
+header{
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    text-align:left;
+}
+
+main{
+    padding: 36px;
+}
+
+.section-title{
+    font-size: 24px;
+    margin: 12px;
+}
+
+.course-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.course{
+    background-color: #444;
+    color: white;
+    margin: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-title{
+    font-size: 20px;
+    margin: 12px;
+}
+
+.course-description{
+    font-size: 16px;
+    margin: 12px;
+}
+
+.course-link{
+    background-color: #516fd1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 12px;
+    margin-left: auto;
+    transition: all 0.5s;
+}
+
+.course-link:hover{
+    background-color: #2f56d7;
+    
+}
