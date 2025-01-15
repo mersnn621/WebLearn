@@ -7,20 +7,88 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="previous">前へ</button>
-    <button id="next">次へ</button>
-    <div id="contents"></div>
+    <a href="/" style="text-decoration: none; color: black;">
+    <header>
+        <p class="title">Web制作学習サイト</p>
+        <p class="subtitle">HTMLに触れる</p>
+    </header></a>
+    
+    <div class="contents">
+        <main class="contents-main">
+            <p class="contents-title" id="contents-title">こんにちは</p>
+            <div class="buttongroup">
+                <button id="previous" class="navbut">前へ</button>
+                
+            <button id="next" class="navbut">次へ</button>
+            </div>
+            <div class="article" id="article"></div>
+        </main>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         const buttons = document.querySelectorAll('button');
-        const nowpage = 1;
-        async function loadPage(page) {
-            const res = await fetch(`./pages/${page}.md`);
-            const text = await res.text();
-            const html = marked.parse(text);
-            document.getElementById('contents').innerHTML = html;
+        const NEXT_BUTTON = document.getElementById('next');
+        const PREVIOUS_BUTTON = document.getElementById('previous');
+        const TITLE = document.getElementById('contents-title');
+
+        titlelist = {
+            1: 'このコースについて',
+            2: '環境構築',
+            3: '初めの一歩'
         }
+
+        const MAX_PAGE = 3;
+        let nowpage = 1;
+        if(localStorage.getItem('nowpage') === null) {
+            localStorage.setItem('nowpage', 1);
+        }else{
+            nowpage = localStorage.getItem('nowpage');
+        }
+        async function loadPage(page) {
+            const res = await fetch(`./pages/${page}.html`);
+            const text = await res.text();
+            document.getElementById('article').innerHTML = text;
+        }
+
+        function setdisabled() {
+            if(nowpage == 1) {
+                PREVIOUS_BUTTON.disabled = true;
+            }else if(nowpage == MAX_PAGE) {
+                NEXT_BUTTON.disabled = true;
+            }else{
+                PREVIOUS_BUTTON.disabled = false;
+                NEXT_BUTTON.disabled = false;
+            }
+        }
+
+        function setTitle() {
+            TITLE.textContent = titlelist[nowpage];
+        }
+
         loadPage(nowpage);
+        setdisabled();
+        setTitle();
+        
+
+        NEXT_BUTTON.addEventListener('click', () => {
+            if(nowpage < MAX_PAGE) {
+                nowpage++;
+                localStorage.setItem('nowpage', nowpage);
+                loadPage(nowpage);
+            }
+            setdisabled();
+            setTitle();
+        });
+
+        PREVIOUS_BUTTON.addEventListener('click', () => {
+            if(nowpage > 1) {
+                nowpage--;
+                localStorage.setItem('nowpage', nowpage);
+                loadPage(nowpage);
+            }
+            setdisabled();
+            setTitle();
+        });
     </script>
 </body>
 </html>
