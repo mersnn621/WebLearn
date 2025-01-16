@@ -1,0 +1,13 @@
+body *{
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar::-webkit-scrollbar {
+    display: none;
+}

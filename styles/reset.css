@@ -6,6 +6,17 @@
   box-sizing: border-box;
 }
 
+body{
+  /*スクロールバー非表示（IE・Edge）*/
+  -ms-overflow-style: none;
+  /*スクロールバー非表示（Firefox）*/
+  scrollbar-width: none;
+}
+/*スクロールバー非表示（Chrome・Safari）*/
+body::-webkit-scrollbar{
+  display:none;
+}
+
 /* Prevent font size inflation */
 html {
   -moz-text-size-adjust: none;
@@ -72,4 +83,3 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-

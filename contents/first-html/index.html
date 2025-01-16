@@ -7,24 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/" style="text-decoration: none; color: black;">
+    <a href="../../index.html" style="text-decoration: none; color: black;">
     <header>
         <p class="title">Web制作学習サイト</p>
         <p class="subtitle">HTMLに触れる</p>
     </header></a>
-    
+
     <div class="contents">
         <main class="contents-main">
-            <p class="contents-title" id="contents-title">こんにちは</p>
+            <p class="contents-title" id="contents-title">{{ Title }}
             <div class="buttongroup">
                 <button id="previous" class="navbut">前へ</button>
-                
+
             <button id="next" class="navbut">次へ</button>
             </div>
-            <div class="article" id="article"></div>
+            <iframe src="" frameborder="0" id="article" class="article"></iframe>
         </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="../../lib/vue.js"></script>
     <script>
         const buttons = document.querySelectorAll('button');
         const NEXT_BUTTON = document.getElementById('next');
@@ -45,9 +46,7 @@
             nowpage = localStorage.getItem('nowpage');
         }
         async function loadPage(page) {
-            const res = await fetch(`./pages/${page}.html`);
-            const text = await res.text();
-            document.getElementById('article').innerHTML = text;
+            document.getElementById('article').src = `./pages/${page}.html`
         }
 
         function setdisabled() {
@@ -68,7 +67,7 @@
         loadPage(nowpage);
         setdisabled();
         setTitle();
-        
+
 
         NEXT_BUTTON.addEventListener('click', () => {
             if(nowpage < MAX_PAGE) {
