@@ -62,6 +62,10 @@ main{
     margin: 12px;
 }
 
+.studentinfo{
+    height: 3rem;
+}
+
 .course-description{
     font-size: 16px;
     margin: 12px;
@@ -103,7 +107,8 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    height: 100%;
+    width: 90%;
     min-width: 320px;
 }
 
@@ -111,6 +116,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height:100svh
 }
 
 .buttongroup{
@@ -141,6 +147,7 @@ iframe{
     -ms-overflow-style: none;
     /*スクロールバー非表示（Firefox）*/
     scrollbar-width: none;
+    height: 100%;
   }
   /*スクロールバー非表示（Chrome・Safari）*/
   iframe::-webkit-scrollbar{

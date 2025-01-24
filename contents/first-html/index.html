@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../styles/top.css">
     <title>Document</title>
 </head>
-<body>
+<body id="body">
     <a href="../../index.html" style="text-decoration: none; color: black;">
     <header>
         <p class="title">Web制作学習サイト</p>
@@ -25,12 +25,12 @@
         </main>
     </div>
 
-    <script src="../../lib/vue.js"></script>
     <script>
         const buttons = document.querySelectorAll('button');
         const NEXT_BUTTON = document.getElementById('next');
         const PREVIOUS_BUTTON = document.getElementById('previous');
-        const TITLE = document.getElementById('contents-title');
+        const TITLE = document.getElementById("contents-title")
+        
 
         titlelist = {
             1: 'このコースについて',
@@ -61,7 +61,7 @@
         }
 
         function setTitle() {
-            TITLE.textContent = titlelist[nowpage];
+            TITLE.innerText = titlelist[nowpage];
         }
 
         loadPage(nowpage);

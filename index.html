@@ -9,6 +9,7 @@
 <body>
     <header><p class="title">Web制作学習サイト</p></header>
     <main>
+        <iframe src="./name.html" frameborder="0" class="studentinfo" id="studentinfo" onerror="document.getElementsById('studentinfo').remove()"></iframe>
         <p class="subtitle" style="font-size: 32px; margin-bottom: 24px;">コース一覧</p>
         <section>
             <p class="section-title">はじめてのWeb制作</p>
@@ -22,5 +23,10 @@
             </div>
         </section>
     </main>
+    <script>
+        if(!window.location.href.includes("file://")){
+            document.getElementById("studentinfo").remove()
+        }
+    </script>
 </body>
 </html>
